@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  app:
+    image: bitnami/postgresql:13.16.0
+    environment:
+      - DATABASE_URL=postgresql://neondb_owner:JckXIE5tqB4W@ep-misty-bread-a5u8b1td.us-east-2.aws.neon.tech/neondb?sslmode=require
+    ports:
+      - "5432:5432"
+    depends_on:
+      - pgadmin
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
